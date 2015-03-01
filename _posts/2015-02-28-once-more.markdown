@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Once more"
+date:   2015-02-28 13:57:14
+categories: pontification
+summary:    So, I'm going to try this hideous blogging thing again.
+---
+So, I'm going to try this hideous blogging thing again. In the hopes that it will benefit someone, and the karma will come back around.
+
+{% highlight haskell %}
+  blog :: Human a => a -> Learn -> Maybe Writing -> Either Boredom Disappointment
+{% endhighlight %}

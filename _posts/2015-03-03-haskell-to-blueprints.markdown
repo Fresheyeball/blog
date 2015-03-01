@@ -6,15 +6,15 @@ categories: integration
 summary: I don't want to write C++, or do business logic in Blueprints. Haskell does a great job with business logic, can run be embedded in C++ and should play well with Blueprints conceptually.
 ---
 
-So here is the thing. I want to make games. Producing art and code are passions that are deeply personal, and have to be practiced and the zenith of your ability to be satisfying. And as we all should know, flow is extremely important. 
+So here is the thing. I want to make games. 
 
-After trying out several platforms, one stood out for the quality of its tooling and resulting games.
+After trying out several platforms, one stood out for the quality of its tooling and beautiful results.
 
 ## Unreal Engine 4
 
-In practicing UE4 flow was achieved in the level editor, and with simple blueprints; but not business logic. Math in blueprints is insane to read, as are (the equivalent of) switch statements and many other constructs. Blueprints seems to excel at interactive logic chains where the code is describing a response from the player, or performing actions in the world.
+In practicing UE4 flow was achieved in the level editor, and with simple blueprints; but not business logic. Math in blueprints is insane to read, as are (the equivalent of) switch statements and many other constructs. Blueprints seems to excel at interactive logic chains describing a response from the player, or performing actions in the world.
 
-The alternative is C++, which I don't know or have a desire to learn. Flow for me right now is in the purely functional languages and its painful to give that up. C++ also has a pretty high learning curve, so the likely-hood of achieving flow in C++ is more than a little far off.
+The alternative is C++, which I don't know or have a desire to learn. Flow for me right now is in the purely functional languages and its painful to give that up. C++ also has a pretty high learning curve, and the likely-hood of achieving flow in C++ is more than a little far off.
 
 So there is a hole, a place where business logic needs to live, and where I can have flow. Blueprints stay in the picture because they excel at specific types of logic so what are the properties of Blueprints? 
 

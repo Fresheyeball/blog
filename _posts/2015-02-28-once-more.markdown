@@ -8,5 +8,5 @@ summary:    So, I'm going to try this hideous blogging thing again.
 So, I'm going to try this hideous blogging thing again. In the hopes that it will benefit someone, and the karma will come back around.
 
 {% highlight haskell %}
-  blog :: Human a => a -> Learn -> Maybe Writing -> Either Boredom Disappointment
+  blog :: Human a => a -> Learning -> Either Boredom Disappointment -> Maybe Writing
 {% endhighlight %}

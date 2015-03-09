@@ -6,7 +6,9 @@ categories: integration
 summary: Getting started. Embedding Haskell in Visual C++ as a Plugin for Unreal Engine 4.
 ---
 
-So Unreal Engine uses a build system called the Unreal Build Tool (UBT) which runs on Mono in C#. It seems to handle linking and some code generation, orchestrating the build process until the Unreal Editor launches and takes over from there. I'm sure it does much more than that, but for wiring in Haskell thats all that should be necessary. 
+Filthy filthy filthy, thats how this is going to work at first. The goal here is to get Unreal Haskell to trigger computation in Haskell from Blueprints, with glue coming from the plugin.
+
+So there is a separation. The Haskell being called from Blueprints must NOT be a part of Unreal Haskell, but rather a sample consumption of the plugin. Ensure the consuming code is as removed as possible from the gluing code has to be there from the very beginning.
 
 ## Just Haskell and Visual C++
 
@@ -20,6 +22,10 @@ Because `Main` will be in C++, the Spineless Tagless Graph Machine (STG) must st
 - Haskell's FFI is oriented around C not C++ and the specific Start and Stop functions can't be included in C++
 - Documentation is sparse
 
+## Unreal Build Tool
+
+So Unreal Engine uses a build system called the Unreal Build Tool (UBT) which runs on Mono in C#. It seems to handle linking and some code generation, orchestrating the build process until the Unreal Editor launches and takes over from there. I'm sure it does much more than that, but for wiring in Haskell thats all that should be necessary.
+
 ## Plugin Structure
 
-The basic structure of an Unreal Plugin is well templated [here](https://wiki.unrealengine.com/Plugin,_Functional_Code_Template_For_You). 
+The basic structure of an Unreal Plugin is well templated [here](https://wiki.unrealengine.com/Plugin,_Functional_Code_Template_For_You).

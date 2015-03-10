@@ -8,21 +8,19 @@ summary: Getting started. Embedding Haskell in Visual C++ as a Plugin for Unreal
 
 Filthy filthy filthy, thats how this is going to work at first. The goal here is to get Unreal Haskell to trigger computation in Haskell from Blueprints, with glue coming from the plugin.
 
-So there is a separation. The Haskell being called from Blueprints must NOT be a part of Unreal Haskell, but rather a sample consumption of the plugin. Ensure the consuming code is as removed as possible from the gluing code has to be there from the very beginning.
-
 ## Just Haskell and Visual C++
 
 Before getting to deep, I thought it was worth it to do a trail run and get Haskell to embed in Visual C++. You can see the results of that exercise here:
 
 [github/fresheyeball/haskell-visual-cpp-minimal](https://github.com/Fresheyeball/haskell-visual-cpp-minimal)
 
-Because `Main` will be in C++, the Spine-less Tag-less Graph Machine (STG) must started and stopped inside C++. To do this there are a few challenges to overcome:
+Because `Main` will be in C++, the Spineless Tagless Graph Machine (STG (the thing that executes Haskell code)) must be started and stopped inside C++. To do this there are a few challenges to overcome:
 
 - GHC comes bundled with GCC, so compiled Haskell binaries cannot be seamlessly included by Visual C++
 - Haskell's FFI is oriented around C not C++ and the specific Start and Stop functions can't be included in C++
 - Documentation is sparse
 
-### Luckily resolving these is not overly complicated or challenging.
+### Luckily resolving these is not overly complicated
 
 The GCC vs Visual C++ compiler gap can be resolved by packaging GHC/GCC binaries inside a `.DLL` with a `.Lib` and including the .Lib as an "Additional Dependency" in Visual Studio.
 
@@ -96,13 +94,13 @@ Project Root
 └─ MyProject.uproject
 ```
 
-And it is a folder as in a directory as in it is NOT a Visual Studio filter (a weird thingy that looks like a folder).
+And it is a folder as in a directory as in it is **not** a Visual Studio filter (a weird thingy that looks like a folder).
 
 ## Unreal Build Tool
 
 So Unreal Engine uses a build system called the Unreal Build Tool (UBT) which runs on Mono in C#. It seems to handle linking and some code generation, orchestrating the build process until the Unreal Editor launches and takes over from there. I'm sure it does much more than that, but for wiring in Haskell thats all that should be necessary. 
 
-UBT files are in C# and named in the convention `*.Build.cs`. To get Haskell compilation to work with UBT it just needs to spawn GHC compilation and DLL packaging from inside of the plugin's `Build.cs`. UBT will also grab anything that looks even remotely related to C in the `Source` folder, so packaged DLLs, Headers and such will need to go there, but in the case of Unreal Haskell, not the Source code. 
+UBT build files are named `*.Build.cs`. To get Haskell compilation to work with UBT it just needs to spawn GHC compilation and DLL packaging from inside of the plugin's `Build.cs`. UBT will also grab anything that looks even remotely related to C in the `Source` folder by convention, so packaged DLLs, Headers and such will need to go there, but in the case of Unreal Haskell, not the source code. 
 
 This is because the plugin source will need to contain files like `HsStartEnd.c` which are intended for GHC compilation not UBT slurpage. As well the binaries we hand UBT should contain logic that ultimately comes from the consumer, not the plugin itself.
 

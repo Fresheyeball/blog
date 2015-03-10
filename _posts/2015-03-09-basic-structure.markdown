@@ -3,7 +3,7 @@ layout: post
 title:  "Basic Structure"
 date:   2015-03-09 13:57:14
 categories: integration
-summary: Getting started. Embedding Haskell in Visual C++ as a Plugin for Unreal Engine 4.
+summary: Getting started. Embedding Haskell in Visual C++ as a Plugin for <br/> Unreal Engine 4.
 ---
 
 Filthy filthy filthy, thats how this is going to work at first. The goal here is to get Unreal Haskell to trigger computation in Haskell from Blueprints, with glue coming from the plugin.
